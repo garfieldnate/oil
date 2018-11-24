@@ -44,7 +44,7 @@ function parseFlags {
 function prepareMultilineSelection {
 	if [[ "$forceMultilineSelection" == true ]]; then
 		tmpPecoConfig=$(mktemp /tmp/oil-multiline-selection.XXX)
-		config="{\"Prompt\":\"$mode\",\"StickySelection\": true,\"Action\":{\"selectAndMoveDown\":[\"peco.ToggleSelection\",\"peco.SelectDown\"]},\"Keymap\":{\"C-Space\":\"selectAndMoveDown\",\"ArrowLeft\":\"peco.ScrollLeft\",\"ArrowRight\":\"peco.ScrollRight\"}}"
+		config="{\"Prompt\":\"$mode\",\"StickySelection\": true,\"Action\":{\"selectAndMoveDown\":[\"peco.ToggleSelection\",\"peco.SelectDown\"]},\"Keymap\":{\"C-Space\":\"selectAndMoveDown\",\"ArrowLeft\":\"peco.ScrollLeft\",\"ArrowRight\":\"peco.ScrollRight\"},\"Action\":{\"selectAllAndFinish\":[\"peco.SelectAll\",\"peco.Finish\"]},\"Keymap\":{\"C-c,C-c\":\"selectAllAndFinish\"}}"
 		echo "$config" > "$tmpPecoConfig"
 	fi
 }
