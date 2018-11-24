@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+GETOPT_PATH=/usr/local/opt/gnu-getopt/bin/getopt
+
 # parse command line flags
 function parseFlags {
 	projectWebpage="github.com/AndreiUlmeyda/oil"
@@ -7,7 +9,7 @@ function parseFlags {
 	helpText="Oil is a command line utility to quickly search, select and open your buku-managed bookmarks in your browser. When invoked with one of the flags -t/--tag, -T/--title, -d/--delete it runs in different modes to add tags to/edit the titles of/delete your bookmarks. For a more complete reference visit $projectWebpage."
 
 	# check if getopt is available
-	getopt --test > /dev/null
+	$GETOPT_PATH --test > /dev/null
 	if [[ $? -ne 4 ]]; then
 	    echo "$parsingLibraryError"
 	    exit 1
@@ -17,7 +19,7 @@ function parseFlags {
 	shortOptions=hatTpd
 	longOptions=help,add,tag,title,delete,no-peco-reconfiguration
 
-	parsed=$(getopt --options $shortOptions --longoptions $longOptions --name "$0" -- "$@")
+	parsed=$($GETOPT_PATH --options $shortOptions --longoptions $longOptions --name "$0" -- "$@")
 
 	# exit if parsing arguments failed
 	if [[ $? -ne 0 ]]; then
@@ -95,7 +97,7 @@ function tagBookmarks {
 
 function openInBrowser {
 	url=${urlAndIndex%|*}
-	xdg-open "$url"
+	open "$url"
 }
 
 function forEachBookmark {

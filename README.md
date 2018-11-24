@@ -39,6 +39,18 @@ Note: Packages for specific linux distributions are not published as of yet sinc
 
 Feel free, though, to write me an issue requesting a package for your distro. And if you know what you are doing, I hereby grant you permission to take matters into your own hands and publish one yourself. Godspeed.
 
+### Mac
+
+You must use my forked version of the tool and you must install several tools before installing and running will work:
+
+* brew install coreutils # ginstall
+* brew install gawk
+* brew install getopt
+
+Homebrew will print out the location of the newly installed version of getopt; make sure that matches the declaration in `oil`:
+
+    GETOPT_PATH=/usr/local/opt/gnu-getopt/bin/getopt # change this line
+
 ## multiline selection
 This is a feature of peco that is not enabled by default. Anticipating that most users will not already be using peco but will want to use the feature and not drudge through a bunch of configuration options, oil enables it by default by passing a custom configuration file to peco. This leads to the users configuration being overruled. Should you want to use your own peco config, disable this behaviour via the flags
 `oil -p` or, equivalently, `oil --no-peco-reconfiguration`
