@@ -45,7 +45,7 @@ You must use my forked version of the tool and you must install several tools be
 
 * brew install coreutils # ginstall
 * brew install gawk
-* brew install getopt
+* brew install gnu-getopt
 
 Homebrew will print out the location of the newly installed version of getopt; make sure that matches the declaration in `oil`:
 
